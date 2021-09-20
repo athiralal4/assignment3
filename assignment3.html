@@ -1,0 +1,493 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="form.js"></script>
+    <style>
+        body{
+            margin: 0px;
+            font-family: 'Montserrat';
+            color:#484848;
+        }
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+.modalpopup {
+    opacity: 0;
+    background-color: #ffffff;
+    border: 0.1rem solid #737373;
+    border-radius: 0.2rem;
+    margin:2rem;
+    padding:1rem;
+    text-align:center;
+    font-size:3rem;
+    font-weight:600;
+}
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.9;
+}
+#rb-header{
+   
+    background-color: #d84f57;
+    width: 100%;
+    margin: 0;
+    height: 4rem;
+}  
+
+.redbus-logo {
+   width:5.5rem;
+   height:3.5rem;
+   float: left;
+}
+.human{
+
+    width:1rem;
+    height:1rem;
+
+}
+.icon-bar{
+   height:3.5rem;
+   display: block;
+   padding-bottom:0.7rem;
+   float: left;
+}
+ul {
+    display: block;
+    list-style-type: none;
+    padding-inline-start: 0.5rem;
+    padding-top: 0.5rem;
+    margin: 0rem;
+}
+li{
+    display: inline-block;
+    color:#ffffff;
+    padding-right: 1rem;
+    
+}
+.corner-wrapper{
+    float: right;
+    height:3.5rem;
+   display: block;
+   padding-bottom:0.7rem;
+}
+.content{
+    padding:0.5rem;
+    height:4rem;
+   
+}
+.content-heading{
+    font-size: 2.5rem;
+    text-align:center;
+    padding: 2rem 4rem;
+    font-weight:600;
+    border-bottom: 0.01rem solid  #dddddd;
+}
+.travels-heading{
+    font-size: 1.5rem;
+    color:#d84f57;
+    padding: 1rem;
+    font-weight:600;
+  
+}
+.flex-container{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    
+    padding-bottom: 2rem;
+}
+.flex-item-1{
+    padding-top:3rem;
+    padding-bottom:2rem;
+    flex: 1;
+
+}
+.d-w5 {
+display: flex;
+width: 10rem;
+}
+
+.response{
+    font-size:1rem;
+}
+.good{
+    float:right;
+}
+.comment{
+    font-size:2.5rem;
+    padding-top:1rem;
+
+}
+.flex-item-2{
+    flex: 1;
+background-color: #f9f4f4;
+border-radius: 0.3rem;
+justify-content: flex-end;
+height: 17rem;
+padding-bottom:2rem;
+}
+.grid-container{
+    display:grid;
+    font-size: 1rem;
+    grid-template-columns:10rem 10rem minmax(3.4em,auto);
+    padding:1em;
+    
+    grid-template-areas:
+    "summary summary blank"
+    "ticketid ticketid blank"
+        "pickup pickup dropup"
+        "date date time"
+        "travels travels travels"
+        "seat seat seat"
+        
+        ;
+}
+
+.ticket-heading{
+    color:#d84f57;
+    text-align: left;
+    grid-area: summary;
+    padding-bottom: 0.8rem;
+}
+.ticketid{
+    grid-area:ticketid;
+    align-self:end;
+    padding-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color:#9b9b9b;
+}
+.pickup{
+    display:flex;
+    flex-direction: column;
+    grid-area:pickup;
+    padding-bottom:1rem;
+    border-bottom:1px solid #9b9b9b;
+}
+.dropup{
+    grid-area:dropup;
+    justify-content: flex-end;
+    display:flex;
+    flex-direction: column;
+    padding-bottom:1rem;
+    border-bottom:1px solid #9b9b9b;
+    
+}
+.mainplace{
+    font-weight: 600;
+}
+.subplace{
+    font-size: 0.8rem;
+    color: #9b9b9b;
+    font-weight: 600;
+}
+.date{
+    grid-area: date;
+    padding: 0.7rem 0rem;
+    font-size: 0.9rem;
+    border-bottom:1px solid #9b9b9b;
+}
+.time{
+    grid-area: time;
+    padding: 0.5rem 0rem;
+    font-size: 0.9rem;
+    border-bottom:1px solid #9b9b9b;
+}
+.travels{
+   grid-area:travels;
+   padding-top:1rem ;
+
+}
+.seat{
+    grid-area:seat;
+    font-size: 0.8rem;
+    color: #9b9b9b;
+    font-weight: 600;
+
+}
+input{
+      display: none
+    }
+.star-rating{
+    display:flex;
+    flex-direction: row;
+    padding-top:2rem;
+}
+
+.parameter-heading{
+    padding-bottom:2rem;
+    font-weight: 600;
+}
+.flex1-heading{
+   
+    font-weight: 400;
+}
+.parameter{
+
+    border: 1px solid  #d84f57;
+   background-color: #ffffff;
+    border-radius: 59px;
+    padding: 0.8rem;
+    display: inline-flex;
+    margin: 0px 1rem 1rem 0px;
+    cursor: pointer;
+    color: #d84f57;
+    cursor: pointer;
+
+}
+
+.parameter:hover {
+    background-color:#d84f57 ;
+    color:#ffffff;
+}
+
+input:checked+label>.parameter{
+      background-color: #d84f57 !important;
+      color:#ffffff;
+    }
+input:checked+label> parameter {
+    background-color:#d84f57 ;
+    color:#ffffff;
+}
+
+.bold{
+    font-weight: 700;
+    color:#484848;
+}
+.rating-content{
+
+    padding:1.5rem 7rem;
+}
+.thumb-down{
+    height:1.3rem;
+    width:1.3rem;
+    padding-left: 0.1rem;
+}
+.text-box {
+    color: rgb(28, 28, 28);
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+   
+    border: 1px solid  #dddddd;
+   
+    margin-top: 0px;
+    font-size: 18px;
+    box-sizing: content-box;
+}
+.bc{
+display:flex;
+justify-content: center;
+width :30%;
+border-radius: 3px;
+background-color:#d84e55;
+font-weight: 700;
+line-height: 1.25;
+letter-spacing: 2.25px;
+text-align: center;
+font-family: 'Montserrat';
+
+color: #fff;
+padding: 18px 50px;
+cursor:pointer;
+}
+.button{
+
+display:flex;
+justify-content: center;
+padding:2rem;
+}
+
+.rating {
+
+padding-top: 1rem;
+margin: 0;
+direction: rtl;
+display:flex;
+justify-content: space-between;
+}
+
+.rating li {
+ 
+list-style-type: none;
+
+}
+
+.rating-item {
+border: 1px solid #fff;
+cursor: pointer;
+font-size:2em;
+color: #dddddd;
+}
+
+
+.rating-item::before {
+content:  url("backgroundStar.png");
+}
+.rating-item:hover{
+    content: url("fullstar.png");  
+}
+.rating-item.active  ~ .rating-item::before {
+    content: url("fullstar.png");
+
+}
+
+.rating-item.active{
+    content: url("fullstar.png");
+}
+
+.rating-item:hover ~ .rating-item::before {
+content: url("fullstar.png");
+}
+
+
+
+.footer {
+background-color: #1b2330;
+padding:2rem;
+font-size:15px;
+line-height:24px;
+color:#737373;
+
+display: flex;
+justify-content: right;
+}
+
+.footer-header
+{
+   
+color:#fff;
+font-size:16px;
+margin-top:5px;
+letter-spacing:2px;
+width:85px;
+}
+
+.content-footer{
+  color:#ffffff;
+ flex: 0 0 32%;
+  margin-right: 2rem;
+}
+.arrow {
+  border: solid #ffffff;
+   border-width: 0 0.1rem 0.1rem 0;
+  display: inline-block;
+  padding: 0.3rem;
+  margin-left:1rem;
+  margin-bottom: 0.1rem;
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+   </style>
+
+</head>
+
+<body>
+<header id="rb-header">
+   <div class="content">
+        <img class="redbus-logo" src="https://s3.rdbuz.com/web/images/home/sgp/r_logo.png"/>
+        <div class="icon-bar">
+            <ul>
+                <li>BUS TICKETS </li>
+                <li>rPool <sup style="font-weight: bold;">New</sup></li>
+                <li>BUS HIRE</li>
+</ul>
+</div>
+
+<div class="corner-wrapper">
+    <ul>
+        <li>Help</li>
+        <li class="drop-down">Manage Booking<i class="arrow down"></i></li>
+        <li><img class="human" src="human.png"><i class="arrow down"></i></li>
+        
+    </ul>
+    
+</div>
+        </div>
+
+   
+</header>
+
+<div class="content-heading">
+    Rate and review your trip
+    <div class="travels-heading"> with Imaginary Travels</div>
+</div>
+
+<div class="rating-content" id="rating-content">
+<div class="flex-container">
+    <div class="flex-item-1">
+        <div class="flex1-heading" id="flex1-heading">How would you rate the experience and safety on this trip?</div>
+  
+        <ul class="rating" >
+            <li class="rating-item"  id="1" onclick="display(this)"></li>
+            <li  class="rating-item" id="2" onclick="display(this)"></li>
+            <li class="rating-item" id="3"  onclick="display(this)"></li>
+            <li class="rating-item" id="4" onclick="display(this)"></li>
+            <li class="rating-item" id="5" onclick="display(this)"></li>
+            </ul>
+            <div class="comment" id="comment">
+       <div class="response" id="response">
+           1-Terrible
+           <div class="good">5-Excellent</div>
+       </div>
+    </div>
+</div>
+<div class="d-w5"></div>
+    <div class="flex-item-2">
+        
+        <div class="grid-container">
+            <span class="ticket-heading">TRIP SUMMARY</span>
+            <span class="ticketid">
+                TICKET ID: <span class="bold">TPAM5007890000</span> 
+            </span>
+
+
+            <span class="pickup">
+                <span class="mainplace">Guna</span>
+                <span class="subplace">Busstand</span>
+            </span>
+
+
+
+            <span class="dropup">
+                <span class="mainplace">Dwarka</span>
+                <span class="subplace">Dwarka</span>
+            </span>
+
+
+            <span class="date">
+                Tuesday,22-09-2020
+            </span>
+            <span class="time">
+                4.30PM
+            </span>
+            <span class="travels">
+                Imaginary Travels
+            </span>
+             <span class="seat">
+                 Seats(s) 14
+             </span>
+
+        </div>
+    
+    </div>
+  
+</div>
+<div id="onclickcontent"></div>
+</div>
+<div class="modalpopup" id="modalpopup">Submitted</div>
+
+<div class="footer">
+    <div class="content-footer">
+        <div class="footer-header"><img src="https://s3.rdbuz.com/web/images/home/sgp/r_logo.png" alt=""></div>
+        redBus is the world's largest online bus ticket booking service trusted by over 25 million happy customers globally. 
+        redBus offers bus ticket booking through its website,iOS and Android mobile apps for all major routes.
+      </div>
+     
+  </div>
+</body>
+    
+</html>
